@@ -42,6 +42,5 @@ class Nolder:
                         os.chdir(self.remoteDir[0])
         self.endMe()
     def endMe(self):
-        print(self.emptyDirs)
         self.emptyDirs.close()
 master = Nolder()
