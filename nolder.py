@@ -4,7 +4,8 @@
 import os
 class Nolder:
     def __init__(self):
-        self.visitedFolders = list()
+        self.visitedFolders = ()
+        #self.visitedFolders = list()
         self.mainFolder = self.findDir()
         del self.beBack
         self.homeDir = os.path.abspath(".")
@@ -24,7 +25,8 @@ class Nolder:
         print("I'm working on it..")
         for main in self.mainFolder:
             self.i = 0
-            self.visitedFolders.append(os.path.abspath(main))
+            self.visitedFolders += os.path.abspath(main),
+            #self.visitedFolders.append(os.path.abspath(main))
             os.chdir(main)
             while self.i != 1:
                 if os.path.abspath(".") == self.homeDir:
@@ -38,7 +40,8 @@ class Nolder:
                     elif len(self.remoteDir) == 0:
                         os.chdir("..")
                     else:
-                        self.visitedFolders.append(os.path.abspath(self.remoteDir[0]))
+                        self.visitedFolders += os.path.abspath(self.remoteDir[0]),
+                        #self.visitedFolders.append(os.path.abspath(self.remoteDir[0]))
                         os.chdir(self.remoteDir[0])
         self.endMe()
     def endMe(self):
