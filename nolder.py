@@ -5,10 +5,11 @@ import os, time
 class Nolder:
     def __init__(self):
         self.timeProgram = time.time()
-        self.visitedFolders = ()
+        self.visitedFolders = set()
         #self.visitedFolders = list()
         self.homeDir = os.getcwd()
         self.remoteCloud = ()
+        self.Iminwhat = ""
         self.emptyFilesFinder()
     def findDir(self):
         beBack = list()
@@ -20,18 +21,24 @@ class Nolder:
                 pass
         return beBack
     def emptyFilesFinder(self):
-        def findType():
-            inside = ()
-            info = list(map(lambda x: "dir" if(os.path.isdir(x) == True) else "file", os.listdir(".")))
-            for i in range(len(info)):
-                if (os.path.abspath(os.listdir(".")[i]) in self.visitedFolders) != True:
-                    inside += [info[i], os.listdir(".")[i]],
-                else:
-                    pass
+        print("We are working on it..")
+        def findType(whereyouare=None, inside=()):
+            if whereyouare == self.Iminwhat and len(inside) > 0:
+                inside = list(inside)
+                del inside[0]
+                inside = tuple(inside)
+            else:
+                inside = ()
+                info = list(map(lambda x: "dir" if(os.path.isdir(x) == True) else "file", os.listdir(".")))
+                for i in range(len(info)):
+                    if (os.path.abspath(os.listdir(".")[i]) in self.visitedFolders) != True:
+                        inside += [info[i], os.listdir(".")[i]],
+                    else:
+                        pass
             return inside
         self.mainFolder = findType()
-        #self.emptyFiles = open("emptyFiles.txt", "a+")
-        #self.emptyFiles.write("Hello, there are locacions of empty files, have a nice day!\n")
+        self.emptyFiles = open("emptyFiles.txt", "a+")
+        self.emptyFiles.write("Hello, there are locacions of empty files, have a nice day!\n")
         self.routingFile = None
         for number in self.mainFolder:
             if number[0] == "dir":
@@ -39,32 +46,31 @@ class Nolder:
                 os.chdir(number[1])
                 while i != 1:
                     if os.getcwd() == self.homeDir:
-                        self.visitedFolders = list()
+                        self.visitedFolders = set()
                         i = 1
                     else:
-                        self.remoteCloud = findType()
+                        self.remoteCloud = findType(os.getcwd(), self.remoteCloud)
                         if len(self.remoteCloud) == 0:
-                            self.visitedFolders += os.getcwd(),
+                            self.visitedFolders.add(os.getcwd())
                             os.chdir("..")
                         else:
                             if self.remoteCloud[0][0] == "file":
                                 self.routingFile = os.stat(self.remoteCloud[0][1]).st_size
                                 if self.routingFile == 0:
-                                    print("Oh an empty file")
-                                    #self.emptyFiles.write(os.path.abspath(self.remoteCloud[0][1])+"\n")
+                                    self.emptyFiles.write(os.path.abspath(self.remoteCloud[0][1])+"\n")
                                 else:
                                     pass
+                                self.Iminwhat = os.getcwd()
                             else:
                                 os.chdir(self.remoteCloud[0][1])
-                            self.visitedFolders += os.path.abspath(self.remoteCloud[0][1]),
+                            self.visitedFolders.add(os.path.abspath(self.remoteCloud[0][1]))
             else:
                 self.routingFile = os.stat(number[1]).st_size
                 if self.routingFile == 0:
-                    print("Oh an empty file!")
-                    #self.emptyFiles.write(os.path.abspath(number[1]))
+                    self.emptyFiles.write(os.path.abspath(number[1]))
                 else:
                     pass
-        #self.emptyFiles.close()
+        self.emptyFiles.close()
         print(str((time.time()-self.timeProgram)/60))
     def emptyDirsFinder(self):
         self.emptyDirs = open("emptyDirs.txt", "a+")
@@ -72,7 +78,7 @@ class Nolder:
         print("I'm working on it..")
         for main in self.mainFolder:
             i = 0
-            self.visitedFolders += os.path.abspath(main),
+            self.visitedFolders.add(os.path.abspath(main))
             #self.visitedFolders.append(os.path.abspath(main))
             os.chdir(main)
             while i != 1:
@@ -86,7 +92,7 @@ class Nolder:
                     elif len(self.remoteCloud) == 0:
                         os.chdir("..")
                     else:
-                        self.visitedFolders += os.path.abspath(self.remoteCloud[0]),
+                        self.visitedFolders.add(os.path.abspath(self.remoteCloud[0]))
                         #self.visitedFolders.append(os.path.abspath(self.remoteCloud[0]))
                         os.chdir(self.remoteCloud[0])
         self.endMe()
