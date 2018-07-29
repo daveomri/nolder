@@ -1,0 +1,14 @@
+/home/dave/Documents/Programming/nolder/unitTests/level2/New name 5.txt
+/home/dave/Documents/Programming/nolder/unitTests/level2/New name 6.txt|/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/dconf-gsettings-backend/freeglut3/copyright
+/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines/freeglut3/copyright
+/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines/gtk2-engines/freeglut3/copyright
+/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines1/freeglut3/copyright
+/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines1/gtk2-engines/freeglut3/copyright
+/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines-pixbuf/freeglut3/copyright|/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines-pixbuf/New name 1.txt
+/home/dave/Documents/Programming/nolder/unitTests/level2/New name 4.txt
+/home/dave/Documents/Programming/nolder/unitTests/level2/New name 3.txt
+/home/dave/Documents/Programming/nolder/unitTests/level2/New name 2.txt
+/home/dave/Documents/Programming/nolder/unitTests/level2/New name 1.txt|/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines-murrine/gtk2-engines-murrine/New name 2.txt
+/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines-murrine/gtk2-engines-murrine/New name 1.txt|/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/dconf-gsettings-backend/copyright
+/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines/gtk2-engines/dconf-gsettings-backend/copyright
+/home/dave/Documents/Programming/nolder/unitTests/level2/fileInsideFile/gtk2-engines1/gtk2-engines/dconf-gsettings-backend/copyright
